@@ -63,12 +63,12 @@ function Panel({
 }) {
   const imgX = useTransform(progress, [0, 1], ["-12%", "12%"]);
   return (
-    <Link href={href} data-cursor="hover" className="group relative flex h-[78svh] w-[86vw] shrink-0 flex-col overflow-hidden rounded-[28px] bg-surface sm:w-[62vw] lg:w-[48vw]">
+    <Link href={href} data-cursor="hover" className="group relative flex h-[78svh] w-[86vw] shrink-0 flex-col overflow-hidden rounded-[28px] border border-line bg-surface shadow-[0_30px_80px_-40px_rgba(14,26,43,0.35)] sm:w-[62vw] lg:w-[48vw]">
       <div className="relative h-[62%] overflow-hidden">
         <motion.div style={{ x: imgX }} className="absolute -inset-x-[15%] inset-y-0">
           <Image src={image} alt={title} fill sizes="60vw" className="object-cover transition-transform duration-[1.6s] ease-silk group-hover:scale-110" />
         </motion.div>
-        <span className="display absolute left-6 top-4 text-[clamp(4rem,9vw,9rem)] text-bone mix-blend-difference">0{i + 1}</span>
+        <span className="display absolute left-6 top-4 text-[clamp(4rem,9vw,9rem)] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">0{i + 1}</span>
       </div>
       <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
         <h3 className="display text-[clamp(2rem,3.6vw,3.6rem)]">{title}</h3>

@@ -60,9 +60,9 @@ const fragment = /* glsl */ `
     float b = texture2D(uTex, cuv - vec2(shift, 0.0)).b;
     vec3 col = vec3(r, g, b);
     // Subtle grade toward the brand night palette.
-    col = mix(col, col * vec3(0.92, 0.9, 1.05), 0.35);
+    col = mix(col, col * vec3(0.98, 0.97, 1.03), 0.3);
     float vign = smoothstep(1.1, 0.35, distance(vUv, vec2(0.5)));
-    col *= mix(0.75, 1.0, vign);
+    col *= mix(0.92, 1.0, vign);
     gl_FragColor = vec4(col, roundedMask(vUv));
   }
 `;

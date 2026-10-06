@@ -5,13 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "#08090c",
-        surface: "#111318",
-        line: "rgba(242,237,228,0.12)",
-        bone: "#f2ede4",
-        lilac: "#c9a7ff",
-        brand: { DEFAULT: "#3f9be0", dark: "#0a73b0" },
-        plum: { DEFAULT: "#b351eb", deep: "#1a1028" },
+        void: "#f7f4ef",
+        surface: "#ffffff",
+        line: "rgba(14,26,43,0.12)",
+        bone: "#0e1a2b",
+        lilac: "#6a4fe0",
+        brand: { DEFAULT: "#0a73b0", dark: "#07507b" },
+        plum: { DEFAULT: "#b351eb", deep: "#efe7fb" },
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],

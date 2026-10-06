@@ -181,7 +181,7 @@ export default function HomePage() {
               title="Map: Better You Home Care, Burbank"
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
               className="h-[380px] w-full border-0 lg:h-full lg:min-h-[420px]"
-              style={{ filter: "invert(0.92) hue-rotate(180deg) saturate(0.6) contrast(0.9)" }}
+              style={{ filter: "saturate(0.85)" }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />

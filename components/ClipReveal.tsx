@@ -16,7 +16,7 @@ export default function ClipReveal({ src, alt, children, href }: { src: string; 
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-void/80 via-void/20 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-void via-void/80 to-transparent" />
     </motion.div>
   );
   return (

@@ -37,7 +37,7 @@ export default function Cursor() {
       <motion.div
         animate={{ width: big ? 64 : 12, height: big ? 64 : 12 }}
         transition={{ type: "spring", stiffness: 300, damping: 22 }}
-        className="-translate-x-1/2 -translate-y-1/2 rounded-full bg-bone"
+        className="-translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
       />
     </motion.div>
   );

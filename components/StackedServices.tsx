@@ -23,7 +23,7 @@ function Card({ title, text, image, i, n, progress }: { title: string; text: str
   const start = i / n;
   const scale = useTransform(progress, [start, 1], [1, 1 - (n - i) * 0.05]);
   const dim = useTransform(progress, [start, 1], [0, i === n - 1 ? 0 : 0.6]);
-  const colors = ["from-[#13233a]", "from-[#22163a]", "from-[#122a2e]", "from-[#2a1530]"];
+  const colors = ["from-[#e3eef8]", "from-[#efe6fb]", "from-[#e2f1f4]", "from-[#f6e6f6]"];
   return (
     <div className="sticky top-0 flex h-[100svh] items-center justify-center px-5 sm:px-10">
       <motion.div

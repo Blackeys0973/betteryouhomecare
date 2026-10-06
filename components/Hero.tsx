@@ -18,7 +18,7 @@ export default function Hero() {
   const leftX = useTransform(p, [0, 1], ["0vw", reduce ? "0vw" : "-18vw"]);
   const rightX = useTransform(p, [0, 1], ["0vw", reduce ? "0vw" : "18vw"]);
   const titleOpacity = useTransform(p, [0.55, 0.9], [1, 0]);
-  const shade = useTransform(p, [0.4, 1], [0, 0.55]);
+  const shade = useTransform(p, [0.4, 1], [0, 1]);
   const copyOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 1]);
   const copyY = useTransform(scrollYProgress, [0.55, 0.75], [60, 0]);
   const hintOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
@@ -34,15 +34,15 @@ export default function Hero() {
         >
           <LiquidImage src="/images/hug.jpg" progress={p} className="absolute inset-0" />
         </motion.div>
-        <motion.div style={{ opacity: shade }} className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void via-void/60 to-void/10" />
+        <motion.div style={{ opacity: shade }} className="pointer-events-none absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-void via-void/85 to-transparent" />
 
         {/* Giant split title */}
-        <motion.div style={{ opacity: titleOpacity }} className="pointer-events-none absolute inset-0 flex flex-col justify-between px-5 pb-10 pt-28 mix-blend-difference sm:px-10 sm:pt-32">
+        <motion.div style={{ opacity: titleOpacity }} className="pointer-events-none absolute inset-0 flex flex-col justify-between px-5 pb-10 pt-28 sm:px-10 sm:pt-32">
           <motion.h1 style={{ x: leftX }} className="display text-[clamp(4.2rem,15vw,17rem)] text-bone">
             <SplitWords text="High Standard" inView={false} delay={INTRO + 0.1} stagger={0.12} />
           </motion.h1>
           <motion.p style={{ x: rightX }} aria-hidden className="display self-end text-right text-[clamp(4.2rem,15vw,17rem)] italic text-bone">
-            <SplitWords text="of Care!" inView={false} delay={INTRO + 0.35} stagger={0.12} />
+            <SplitWords text="of Care!" inView={false} delay={INTRO + 0.35} stagger={0.12} accent={[1]} />
           </motion.p>
         </motion.div>
 
