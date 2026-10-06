@@ -6,15 +6,19 @@ import VideoCard from "@/components/VideoCard";
 import { Arrow, ParallaxImage, Reveal, SpringButton, Stagger, StaggerItem } from "@/components/motion";
 import { home, joinForm, site } from "@/lib/site";
 import ContactForm from "@/components/ContactForm";
+import Marquee from "@/components/Marquee";
+import PhotoRing from "@/components/PhotoRing";
+import Tilt from "@/components/Tilt";
 
 export default function HomePage() {
   const { services, whatIs, movement, caregivers, la } = home;
   return (
     <>
       <Hero />
+      <Marquee items={services.items.map((s) => s.title)} />
 
       {/* About */}
-      <section className="container-x pb-24 lg:pb-32">
+      <section className="container-x py-24 lg:py-32">
         <Reveal className="mx-auto max-w-4xl text-center">
           <p className="font-display text-2xl leading-snug text-ink/85 sm:text-3xl lg:text-[2.6rem] lg:leading-[1.25]">
             {home.hero.about}
@@ -27,6 +31,7 @@ export default function HomePage() {
         <Stagger className="grid gap-6 md:grid-cols-3" stagger={0.14}>
           {home.pillars.map((p) => (
             <StaggerItem key={p.title}>
+              <Tilt className="h-full">
               <Link
                 href={p.href}
                 className="group block overflow-hidden rounded-[28px] bg-white shadow-sm shadow-ink/5 transition-shadow duration-500 hover:shadow-2xl hover:shadow-ink/10"
@@ -48,6 +53,7 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
+              </Tilt>
             </StaggerItem>
           ))}
         </Stagger>
@@ -75,12 +81,14 @@ export default function HomePage() {
           <Stagger className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
             {services.items.map((s, i) => (
               <StaggerItem key={s.title} className="group">
+                <Tilt max={14}>
                 <div className="relative aspect-[27/23] overflow-hidden rounded-3xl">
                   <Image src={s.image} alt={s.title} fill sizes="(min-width:1024px) 25vw, 50vw" className="object-cover transition-transform duration-[1.4s] ease-silk group-hover:scale-110" />
                   <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 font-display text-sm text-ink backdrop-blur">
                     0{i + 1}
                   </span>
                 </div>
+                </Tilt>
                 <h3 className="mt-6 font-display text-2xl">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink/65">{s.text}</p>
               </StaggerItem>
@@ -142,22 +150,24 @@ export default function HomePage() {
 
       <Testimonials />
 
+      <PhotoRing>
+        <h2 className="font-display text-5xl font-medium leading-none sm:text-7xl">{caregivers.title}</h2>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-cream/75">{caregivers.paragraphs[0]}</p>
+      </PhotoRing>
+
       {/* Caregivers */}
       <section className="bg-sand py-24 lg:py-32">
         <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.1fr]">
           <div className="relative">
             <div className="lg:sticky lg:top-28">
-              <Reveal>
-                <h2 className="h-display text-5xl sm:text-6xl">{caregivers.title}</h2>
-              </Reveal>
-              <div className="mt-10 grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 <ParallaxImage src="/images/care-chat.jpg" alt="Caregiver talking with a senior woman" className="aspect-[3/4] rounded-3xl" strength={30} sizes="25vw" />
                 <ParallaxImage src="/images/started.jpg" alt="Caregiver combing a senior woman's hair" className="mt-12 aspect-[3/4] rounded-3xl" strength={45} sizes="25vw" />
               </div>
             </div>
           </div>
           <div className="space-y-8">
-            {caregivers.paragraphs.map((p, i) => (
+            {caregivers.paragraphs.slice(1).map((p, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <p className={i === 0 ? "font-display text-2xl leading-snug text-ink sm:text-3xl" : "text-lg leading-relaxed text-ink/70"}>{p}</p>
               </Reveal>
