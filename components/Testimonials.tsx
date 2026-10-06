@@ -16,9 +16,10 @@ export default function Testimonials() {
   const t = items[i];
 
   return (
-    <section className="wrap py-32 lg:py-48">
+    <section className="bg-mist py-28 lg:py-40">
+      <div className="wrap">
       <div className="flex items-end justify-between gap-8 border-b border-line pb-8">
-        <h2 className="display text-[clamp(2.6rem,6vw,6rem)]">
+        <h2 className="display t-lg">
           <SplitWords text={home.testimonials.title} accent={[3]} />
         </h2>
         <div className="flex gap-2">
@@ -37,7 +38,7 @@ export default function Testimonials() {
       <div className="relative mt-16 min-h-[22rem]">
         <AnimatePresence mode="wait">
           <motion.figure key={i} exit={{ opacity: 0, y: -30, filter: "blur(10px)" }} transition={{ duration: 0.6, ease: silk }}>
-            <blockquote className="display text-[clamp(1.8rem,3.6vw,3.8rem)] leading-[1.1] text-bone/90">
+            <blockquote className="display t-md leading-[1.1] text-bone/90">
               <SplitWords text={t.quote} stagger={0.018} inView={false} />
             </blockquote>
             <motion.figcaption initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="label mt-10 normal-case tracking-[0.1em]">
@@ -45,6 +46,7 @@ export default function Testimonials() {
             </motion.figcaption>
           </motion.figure>
         </AnimatePresence>
+      </div>
       </div>
     </section>
   );

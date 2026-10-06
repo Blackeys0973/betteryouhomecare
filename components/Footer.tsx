@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="wrap relative grid gap-16 border-t border-line pb-16 pt-28 lg:grid-cols-[1.3fr_1fr] lg:pt-40">
           <div>
             <p className="label">24/7</p>
-            <h2 className="display mt-6 text-[clamp(3rem,7.5vw,8rem)]">
+            <h2 className="display mt-6 t-xl">
               <SplitWords text={assist.title} accent={[3, 4, 5]} />
             </h2>
             <Reveal delay={0.2}>
@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="wrap relative">
           <a href={site.phoneHref} className="group block border-y border-line py-10" data-cursor="hover">
             <span className="label">{assist.hotline.replace(site.phone, "").trim()}</span>
-            <span className="display mt-4 block whitespace-nowrap text-[clamp(3.2rem,13vw,15rem)] transition-all duration-700 ease-silk group-hover:italic group-hover:text-lilac">
+            <span className="display mt-4 block whitespace-nowrap t-xl transition-all duration-700 ease-silk group-hover:italic group-hover:text-lilac">
               {site.phone}
             </span>
           </a>

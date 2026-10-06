@@ -33,7 +33,7 @@ function Card({ title, text, image, i, n, progress }: { title: string; text: str
         <div className="flex flex-col justify-between p-8 sm:p-12">
           <span className="label">0{i + 1} / 0{n}</span>
           <div>
-            <h3 className="display text-[clamp(2.8rem,6vw,6.5rem)]">{title}</h3>
+            <h3 className="display t-lg">{title}</h3>
             <p className="mt-6 max-w-md text-lg text-bone/70">{text}</p>
           </div>
         </div>

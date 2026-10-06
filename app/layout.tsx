@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 import "./globals.css";
 
 const display = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-display" });
-const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
+const sans = Manrope({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-sans" });
 
 const description =
   "Our team of caregivers are highly trained and they are available 24/7 to make sure your loved one will have all the attention and care they deserve.";
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: site.title, description, images: ["/images/hug.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#f7f4ef", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#fcfbf9", width: "device-width", initialScale: 1 };
 
 const jsonLd = {
   "@context": "https://schema.org",

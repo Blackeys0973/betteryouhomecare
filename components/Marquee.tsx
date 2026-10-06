@@ -17,7 +17,7 @@ export default function Marquee({ items, outline = false, reverse = false }: { i
           transition={{ duration: 45, ease: "linear", repeat: Infinity }}
         >
           {row.map((t, i) => (
-            <span key={i} className={`display flex items-center gap-10 text-[clamp(3rem,8vw,9rem)] ${outline && i % 2 ? "outline-text" : ""}`}>
+            <span key={i} className={`display flex items-center gap-10 t-marquee ${outline && i % 2 ? "outline-text" : ""}`}>
               {t}
               <span className="inline-block h-4 w-4 rotate-45 bg-gradient-to-br from-brand to-plum sm:h-6 sm:w-6" />
             </span>

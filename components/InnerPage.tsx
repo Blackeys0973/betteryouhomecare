@@ -46,7 +46,7 @@ export default function InnerPage({
         <p className="label pt-3">{eyebrow}</p>
         <div className="space-y-10">
           {paragraphs.map((p, i) => (
-            <ScrollFillText key={i} text={p} className={i === 0 ? "display text-[clamp(1.9rem,3.4vw,3.4rem)] leading-[1.1]" : "text-xl leading-relaxed"} />
+            <ScrollFillText key={i} text={p} className={i === 0 ? "display t-md leading-[1.1]" : "text-xl leading-relaxed"} />
           ))}
           <Reveal className="flex flex-wrap gap-3 pt-4">
             <PillButton href={cta.href}>
@@ -67,7 +67,7 @@ export default function InnerPage({
           <section className="wrap py-28 lg:py-36">
             {featuresTitle && (
               <Reveal className="mb-16 max-w-3xl">
-                <h2 className="display text-[clamp(2.6rem,5.5vw,5.5rem)]">{featuresTitle}</h2>
+                <h2 className="display t-lg">{featuresTitle}</h2>
                 {featuresText && <p className="mt-6 text-lg text-bone/70">{featuresText}</p>}
               </Reveal>
             )}
@@ -88,7 +88,7 @@ export default function InnerPage({
         <section id="join" className="wrap scroll-mt-24 pb-32">
           <div className="grid gap-12 rounded-[32px] bg-plum-deep p-8 sm:p-14 lg:grid-cols-2">
             <Reveal>
-              <h2 className="display text-[clamp(2.8rem,5.5vw,5.5rem)]">{form.title}</h2>
+              <h2 className="display t-lg">{form.title}</h2>
               {form.lines.map((l) => (
                 <p key={l} className="mt-4 text-lg text-bone/70">{l}</p>
               ))}

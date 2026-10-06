@@ -16,7 +16,6 @@ export default function ClipReveal({ src, alt, children, href }: { src: string; 
       <motion.div style={{ scale }} className="absolute inset-0">
         <Image src={src} alt={alt} fill sizes="100vw" className="object-cover" />
       </motion.div>
-      <div className="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-void via-void/80 to-transparent" />
     </motion.div>
   );
   return (
@@ -29,8 +28,8 @@ export default function ClipReveal({ src, alt, children, href }: { src: string; 
         ) : (
           Inner
         )}
-        <motion.div style={{ opacity: copy }} className="pointer-events-none absolute inset-x-0 bottom-0 px-5 pb-14 sm:px-10">
-          {children}
+        <motion.div style={{ opacity: copy }} className="pointer-events-none absolute inset-x-0 bottom-0 px-4 pb-6 sm:px-10 sm:pb-12">
+          <div className="mx-auto max-w-[1520px] rounded-[28px] bg-white/90 p-7 shadow-[0_30px_80px_-30px_rgba(19,35,58,0.35)] backdrop-blur-md sm:p-12">{children}</div>
         </motion.div>
       </div>
     </section>

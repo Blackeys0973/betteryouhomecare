@@ -29,7 +29,7 @@ export default function HorizontalPillars() {
         <motion.div ref={track} style={{ x }} className="flex w-max items-stretch gap-6 px-5 sm:gap-10 sm:px-10">
           <div className="flex w-[80vw] shrink-0 flex-col justify-end pb-10 sm:w-[42vw]">
             <p className="label">{home.services.eyebrow}</p>
-            <p className="display mt-6 text-[clamp(3rem,7vw,7.5rem)]">
+            <p className="display mt-6 t-xl">
               {home.services.title.split(" ").slice(0, 2).join(" ")}{" "}
               <span className="italic grad">{home.services.title.split(" ").slice(2).join(" ")}</span>
             </p>
@@ -68,10 +68,10 @@ function Panel({
         <motion.div style={{ x: imgX }} className="absolute -inset-x-[15%] inset-y-0">
           <Image src={image} alt={title} fill sizes="60vw" className="object-cover transition-transform duration-[1.6s] ease-silk group-hover:scale-110" />
         </motion.div>
-        <span className="display absolute left-6 top-4 text-[clamp(4rem,9vw,9rem)] text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">0{i + 1}</span>
+        <span className="display absolute left-6 top-4 t-lg text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.35)]">0{i + 1}</span>
       </div>
       <div className="flex flex-1 flex-col justify-between p-6 sm:p-8">
-        <h3 className="display text-[clamp(2rem,3.6vw,3.6rem)]">{title}</h3>
+        <h3 className="display t-md">{title}</h3>
         <div className="flex items-end justify-between gap-6">
           <p className="max-w-md text-bone/65">{text}</p>
           <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-bone/25 transition-all duration-500 group-hover:rotate-[-45deg] group-hover:bg-bone group-hover:text-void">

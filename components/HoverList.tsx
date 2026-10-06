@@ -34,7 +34,7 @@ export default function HoverList({ items, images }: { items: string[]; images: 
             className="group flex items-baseline gap-6 border-b border-line py-6 sm:py-8"
           >
             <span className="label w-10 shrink-0">{String(i + 1).padStart(2, "0")}</span>
-            <span className="display text-[clamp(1.6rem,3.4vw,3.4rem)] text-bone/80 transition-all duration-500 ease-silk group-hover:translate-x-4 group-hover:text-bone group-hover:italic">
+            <span className="display t-md text-bone/80 transition-all duration-500 ease-silk group-hover:translate-x-4 group-hover:text-bone group-hover:italic">
               {it}
             </span>
           </motion.li>

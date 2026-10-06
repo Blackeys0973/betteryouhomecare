@@ -42,7 +42,7 @@ const fragment = /* glsl */ `
   float roundedMask(vec2 uv) {
     vec2 px = uv * uPlane;
     vec2 q = abs(px - uPlane * 0.5) - (uPlane * 0.5 - uRadius);
-    float d = length(max(q, 0.0)) - uRadius;
+    float d = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - uRadius;
     return 1.0 - smoothstep(-1.5, 0.5, d);
   }
 

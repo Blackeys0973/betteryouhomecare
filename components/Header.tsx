@@ -81,7 +81,7 @@ export default function Header() {
                     >
                       <Link href={l.href} className="group flex items-baseline gap-4 py-1">
                         <span className="label w-8">{String(i + 1).padStart(2, "0")}</span>
-                        <span className="display text-[clamp(2rem,5.2vw,5rem)] transition-all duration-500 ease-silk group-hover:translate-x-4 group-hover:italic group-hover:text-lilac">
+                        <span className="display t-lg transition-all duration-500 ease-silk group-hover:translate-x-4 group-hover:italic group-hover:text-lilac">
                           {l.label}
                         </span>
                       </Link>

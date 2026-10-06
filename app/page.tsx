@@ -18,9 +18,9 @@ export default function HomePage() {
       <Hero />
 
       {/* Statement */}
-      <section className="wrap grid gap-10 py-32 lg:grid-cols-[220px_1fr] lg:py-48">
-        <p className="label pt-4">About Us</p>
-        <ScrollFillText text={home.hero.about} className="display text-[clamp(2rem,4.6vw,4.8rem)] leading-[1.05]" />
+      <section className="wrap py-28 text-center lg:py-40">
+        <p className="label">About Us</p>
+        <ScrollFillText text={home.hero.about} className="display t-lg mx-auto mt-8 max-w-4xl !leading-[1.3]" />
       </section>
 
       <div className="border-y border-line">
@@ -40,7 +40,7 @@ export default function HomePage() {
       {/* Conditions + dementia CTA */}
       <section className="wrap grid gap-16 py-32 lg:grid-cols-2 lg:py-44">
         <div>
-          <h2 className="display text-[clamp(2.6rem,5.4vw,5.6rem)]">
+          <h2 className="display t-lg">
             <SplitWords text={services.dementiaCta} accent={[7, 8, 9, 10, 11]} />
           </h2>
           <Reveal delay={0.3} className="mt-10">
@@ -64,7 +64,7 @@ export default function HomePage() {
       {/* What is home care */}
       <section className="wrap py-24 lg:py-32">
         <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <h2 className="display text-[clamp(3.4rem,9vw,10rem)]">
+          <h2 className="display t-xl">
             <SplitWords text={whatIs.title} accent={[3]} />
           </h2>
           <Reveal delay={0.2}>
@@ -101,7 +101,7 @@ export default function HomePage() {
       {/* Movement */}
       <ClipReveal src="/images/team-hands.jpg" alt="Hands joined in a circle forming hearts">
         <div className="pointer-events-auto grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-end">
-          <h2 className="display text-[clamp(3rem,8vw,9rem)]">
+          <h2 className="display t-xl">
             {movement.title.split(". ")[0]}. <span className="italic grad">{movement.title.split(". ")[1]}</span>
           </h2>
           <div>
@@ -118,7 +118,7 @@ export default function HomePage() {
       {/* Caregivers */}
       <PhotoRing>
         <p className="label mb-6">Better You</p>
-        <h2 className="display text-[clamp(3.6rem,10vw,11rem)]">
+        <h2 className="display t-xl">
           {caregivers.title.split(" ")[0]} <span className="italic grad">{caregivers.title.split(" ")[1]}</span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-bone/70">{caregivers.paragraphs[0]}</p>
@@ -133,7 +133,7 @@ export default function HomePage() {
         </div>
         <div className="space-y-12">
           {caregivers.paragraphs.slice(1).map((p, i) => (
-            <ScrollFillText key={i} text={p} className={i === 0 ? "display text-[clamp(1.8rem,3vw,3rem)] leading-[1.1]" : "text-xl leading-relaxed text-bone"} />
+            <ScrollFillText key={i} text={p} className={i === 0 ? "display t-sm leading-[1.1]" : "text-xl leading-relaxed text-bone"} />
           ))}
           <Reveal>
             <blockquote className="border-l-2 border-lilac pl-8 font-display text-2xl italic leading-snug text-bone/85 sm:text-3xl">{caregivers.closing}</blockquote>
@@ -146,7 +146,7 @@ export default function HomePage() {
       {/* Los Angeles */}
       <ClipReveal src="/images/los-angeles.webp" alt="Palm-lined street in Los Angeles">
         <div className="pointer-events-auto grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
-          <h2 className="display text-[clamp(3.4rem,9vw,10rem)]">
+          <h2 className="display t-xl">
             Los Angeles <span className="italic grad">County</span>
           </h2>
           <div>
@@ -194,7 +194,7 @@ export default function HomePage() {
         <div className="relative grid gap-12 overflow-hidden rounded-[32px] bg-plum-deep p-8 sm:p-14 lg:grid-cols-2">
           <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-plum/30 blur-[100px]" />
           <div className="relative">
-            <h2 className="display text-[clamp(2.8rem,5.5vw,5.5rem)]">
+            <h2 className="display t-lg">
               <SplitWords text={joinForm.title} accent={[3]} />
             </h2>
             {joinForm.lines.map((l) => (

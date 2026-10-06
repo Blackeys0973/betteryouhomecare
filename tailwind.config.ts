@@ -5,11 +5,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        void: "#f7f4ef",
+        void: "#fcfbf9",
+        mist: "#eef5fb",
         surface: "#ffffff",
-        line: "rgba(14,26,43,0.12)",
-        bone: "#0e1a2b",
-        lilac: "#6a4fe0",
+        line: "rgba(19,35,58,0.1)",
+        bone: "#13233a",
+        lilac: "#0a73b0",
         brand: { DEFAULT: "#0a73b0", dark: "#07507b" },
         plum: { DEFAULT: "#b351eb", deep: "#efe7fb" },
       },

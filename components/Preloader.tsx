@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { expo } from "./motion";
 
@@ -16,14 +17,14 @@ export default function Preloader() {
     const start = performance.now();
     let id = 0;
     const tick = (t: number) => {
-      const k = Math.min((t - start) / 2000, 1);
+      const k = Math.min((t - start) / 1200, 1);
       setN(Math.round((1 - Math.pow(1 - k, 3)) * 100));
       if (k < 1) id = requestAnimationFrame(tick);
       else
         setTimeout(() => {
           setDone(true);
           document.documentElement.style.overflow = "";
-        }, 250);
+        }, 150);
     };
     id = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(id);
@@ -34,22 +35,17 @@ export default function Preloader() {
       {!done && (
         <motion.div
           key="pre"
-          exit={{ clipPath: "inset(0 0 100% 0)" }}
-          transition={{ duration: 1.1, ease: expo }}
-          style={{ clipPath: "inset(0 0 0% 0)" }}
-          className="fixed inset-0 z-[100] flex flex-col justify-between bg-void px-5 py-8 sm:px-10"
+          exit={{ opacity: 0, y: -24 }}
+          transition={{ duration: 0.8, ease: expo }}
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-8 bg-void"
         >
-          <div className="flex justify-between">
-            <span className="label">Better You Home Care</span>
-            <span className="label">Los Angeles County</span>
-          </div>
-          <div className="flex items-end justify-between">
-            <span className="display text-[clamp(5rem,22vw,22rem)] tabular-nums text-bone">{n}</span>
-            <span className="display mb-4 text-[clamp(1.5rem,4vw,3.5rem)] italic grad">High Standard of Care!</span>
-          </div>
-          <div className="h-px w-full bg-bone/10">
+          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative h-20 w-40">
+            <Image src="/images/logo.png" alt="Better You Home Care" fill sizes="160px" className="object-contain" priority />
+          </motion.div>
+          <div className="h-px w-48 bg-bone/10">
             <div className="h-px bg-gradient-to-r from-brand to-plum" style={{ width: `${n}%` }} />
           </div>
+          <span className="text-xs tabular-nums tracking-[0.3em] text-bone/40">{String(n).padStart(3, "0")}</span>
         </motion.div>
       )}
     </AnimatePresence>
