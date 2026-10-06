@@ -84,6 +84,11 @@ export default function Footer() {
           </div>
         </div>
 
+        <Reveal className="wrap relative flex justify-center border-t border-line py-16 sm:py-20">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo-full.svg" alt={`${site.name} logo`} className="h-40 w-auto sm:h-56" />
+        </Reveal>
+
         <div className="wrap relative flex flex-col gap-3 border-t border-line py-8 text-xs text-bone/45 sm:flex-row sm:items-center sm:justify-between">
           <p>{site.copyright}</p>
           <p>{site.license}</p>

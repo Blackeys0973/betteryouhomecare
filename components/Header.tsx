@@ -1,7 +1,6 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -32,16 +31,17 @@ export default function Header() {
         transition={{ duration: 0.8, ease: silk }}
         className="fixed inset-x-0 top-0 z-[80] mix-blend-normal"
       >
-        <div className="flex h-20 items-center justify-between px-5 sm:px-10">
-          <Link href="/" className="relative block h-10 w-[78px] overflow-hidden rounded-lg bg-white" aria-label={site.name}>
-            <Image src="/images/logo.png" alt={`${site.name} logo`} fill sizes="78px" className="object-contain p-1" priority />
+        <div className="relative flex h-24 items-center justify-between px-5 sm:h-28 sm:px-10">
+          <Magnetic>
+            <a href={site.phoneHref} className="hidden items-center gap-2 rounded-full border border-bone/20 bg-void/40 px-5 py-3 text-sm font-medium backdrop-blur-md transition hover:border-bone/60 sm:inline-flex">
+              <PhoneIcon /> {site.phone}
+            </a>
+          </Magnetic>
+          <Link href="/" className="absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2" aria-label={site.name}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo-full.svg" alt={`${site.name} logo`} className="h-16 w-auto sm:h-20" />
           </Link>
           <div className="flex items-center gap-2 sm:gap-3">
-            <Magnetic>
-              <a href={site.phoneHref} className="hidden items-center gap-2 rounded-full border border-bone/20 bg-void/40 px-5 py-3 text-sm font-medium backdrop-blur-md transition hover:border-bone/60 sm:inline-flex">
-                <PhoneIcon /> {site.phone}
-              </a>
-            </Magnetic>
             <Magnetic>
               <button
                 onClick={() => setOpen((o) => !o)}
