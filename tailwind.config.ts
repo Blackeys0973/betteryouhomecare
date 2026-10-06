@@ -5,12 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0b2540",
-        brand: { DEFAULT: "#0a73b0", light: "#559ec8", dark: "#07507b" },
-        plum: { DEFAULT: "#b351eb", soft: "#f3e6fc" },
-        teal: "#006d77",
-        cream: "#faf7f2",
-        sand: "#f1ebe1",
+        void: "#08090c",
+        surface: "#111318",
+        line: "rgba(242,237,228,0.12)",
+        bone: "#f2ede4",
+        lilac: "#c9a7ff",
+        brand: { DEFAULT: "#3f9be0", dark: "#0a73b0" },
+        plum: { DEFAULT: "#b351eb", deep: "#1a1028" },
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
@@ -18,6 +19,7 @@ const config: Config = {
       },
       transitionTimingFunction: {
         silk: "cubic-bezier(0.22, 1, 0.36, 1)",
+        expo: "cubic-bezier(0.87, 0, 0.13, 1)",
       },
     },
   },

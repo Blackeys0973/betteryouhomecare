@@ -17,12 +17,12 @@ const headings = new Set([
 
 export default function Privacy() {
   return (
-    <section className="container-x pb-24 pt-36 sm:pt-44">
+    <section className="wrap pb-32 pt-40 sm:pt-48">
       <PageTitle eyebrow="Policy and Privacy" title="Privacy Policy" />
-      <div className="mt-14 max-w-3xl space-y-5 text-ink/75">
+      <div className="mt-14 max-w-3xl space-y-5 text-bone/70">
         {(privacy as string[]).map((line, i) =>
           headings.has(line) ? (
-            <h2 key={i} className="pt-6 font-display text-2xl text-ink">{line}</h2>
+            <h2 key={i} className="pt-6 display text-4xl text-bone">{line}</h2>
           ) : (
             <p key={i} className="leading-relaxed">{line}</p>
           ),

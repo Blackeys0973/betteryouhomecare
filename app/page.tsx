@@ -1,248 +1,212 @@
 import Image from "next/image";
-import Link from "next/link";
-import Hero from "@/components/Hero";
-import Testimonials from "@/components/Testimonials";
-import VideoCard from "@/components/VideoCard";
-import { Arrow, ParallaxImage, Reveal, SpringButton, Stagger, StaggerItem } from "@/components/motion";
-import { home, joinForm, site } from "@/lib/site";
+import ClipReveal from "@/components/ClipReveal";
 import ContactForm from "@/components/ContactForm";
+import Hero from "@/components/Hero";
+import HorizontalPillars from "@/components/HorizontalPillars";
+import HoverList from "@/components/HoverList";
 import Marquee from "@/components/Marquee";
 import PhotoRing from "@/components/PhotoRing";
-import Tilt from "@/components/Tilt";
+import StackedServices from "@/components/StackedServices";
+import Testimonials from "@/components/Testimonials";
+import { Arrow, Magnetic, ParallaxImage, PillButton, Reveal, ScrollFillText, SplitWords } from "@/components/motion";
+import { home, joinForm, site } from "@/lib/site";
 
 export default function HomePage() {
   const { services, whatIs, movement, caregivers, la } = home;
   return (
     <>
       <Hero />
-      <Marquee items={services.items.map((s) => s.title)} />
 
-      {/* About */}
-      <section className="container-x py-24 lg:py-32">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <p className="font-display text-2xl leading-snug text-ink/85 sm:text-3xl lg:text-[2.6rem] lg:leading-[1.25]">
-            {home.hero.about}
-          </p>
-        </Reveal>
+      {/* Statement */}
+      <section className="wrap grid gap-10 py-32 lg:grid-cols-[220px_1fr] lg:py-48">
+        <p className="label pt-4">About Us</p>
+        <ScrollFillText text={home.hero.about} className="display text-[clamp(2rem,4.6vw,4.8rem)] leading-[1.05]" />
       </section>
 
-      {/* Pillars */}
-      <section className="container-x pb-24 lg:pb-32">
-        <Stagger className="grid gap-6 md:grid-cols-3" stagger={0.14}>
-          {home.pillars.map((p) => (
-            <StaggerItem key={p.title}>
-              <Tilt className="h-full">
-              <Link
-                href={p.href}
-                className="group block overflow-hidden rounded-[28px] bg-white shadow-sm shadow-ink/5 transition-shadow duration-500 hover:shadow-2xl hover:shadow-ink/10"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    fill
-                    sizes="(min-width:768px) 33vw, 100vw"
-                    className="object-cover transition-transform duration-[1.2s] ease-silk group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-7">
-                  <h3 className="font-display text-2xl text-ink">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/65">{p.text}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand transition-all duration-500 group-hover:gap-4">
-                    GET STARTED <Arrow />
-                  </span>
-                </div>
-              </Link>
-              </Tilt>
-            </StaggerItem>
-          ))}
-        </Stagger>
+      <div className="border-y border-line">
+        <Marquee items={services.items.map((s) => s.title)} outline />
+      </div>
+
+      <HorizontalPillars />
+
+      <section className="pt-24">
+        <div className="wrap mb-6 flex items-end justify-between">
+          <p className="label">{services.eyebrow}</p>
+          <p className="label">0{services.items.length}</p>
+        </div>
+        <StackedServices />
       </section>
 
-      {/* Services */}
-      <section className="bg-sand py-24 lg:py-32">
-        <div className="container-x">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-end">
-            <Reveal>
-              <p className="eyebrow">{services.eyebrow}</p>
-              <h2 className="h-display mt-5 text-4xl sm:text-5xl lg:text-6xl">{services.title}</h2>
-            </Reveal>
-            <Reveal delay={0.2} className="lg:pb-3">
-              <ul className="flex flex-wrap gap-2">
-                {services.conditions.map((c) => (
-                  <li key={c} className="rounded-full border border-ink/10 bg-cream px-4 py-2 text-sm text-ink/75">
-                    {c}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-
-          <Stagger className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4" stagger={0.1}>
-            {services.items.map((s, i) => (
-              <StaggerItem key={s.title} className="group">
-                <Tilt max={14}>
-                <div className="relative aspect-[27/23] overflow-hidden rounded-3xl">
-                  <Image src={s.image} alt={s.title} fill sizes="(min-width:1024px) 25vw, 50vw" className="object-cover transition-transform duration-[1.4s] ease-silk group-hover:scale-110" />
-                  <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 font-display text-sm text-ink backdrop-blur">
-                    0{i + 1}
-                  </span>
-                </div>
-                </Tilt>
-                <h3 className="mt-6 font-display text-2xl">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink/65">{s.text}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
-
-          <Reveal delay={0.1} className="mt-20">
-            <div className="relative overflow-hidden rounded-[32px] bg-ink px-8 py-14 text-cream sm:px-14">
-              <div className="pointer-events-none absolute -right-20 -top-20 h-80 w-80 rounded-full bg-plum/40 blur-[90px]" />
-              <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-                <p className="max-w-2xl font-display text-3xl leading-tight sm:text-4xl">{services.dementiaCta}</p>
-                <SpringButton href="#contact" variant="light">
-                  Get Started <Arrow />
-                </SpringButton>
-              </div>
-            </div>
+      {/* Conditions + dementia CTA */}
+      <section className="wrap grid gap-16 py-32 lg:grid-cols-2 lg:py-44">
+        <div>
+          <h2 className="display text-[clamp(2.6rem,5.4vw,5.6rem)]">
+            <SplitWords text={services.dementiaCta} accent={[7, 8, 9, 10, 11]} />
+          </h2>
+          <Reveal delay={0.3} className="mt-10">
+            <PillButton href="#contact" variant="grad">
+              Get Started <Arrow />
+            </PillButton>
           </Reveal>
         </div>
+        <ul className="self-end border-t border-line">
+          {services.conditions.map((c, i) => (
+            <Reveal key={c} delay={i * 0.06}>
+              <li className="flex gap-6 border-b border-line py-5 text-lg text-bone/80">
+                <span className="label pt-1.5">{String(i + 1).padStart(2, "0")}</span>
+                {c}
+              </li>
+            </Reveal>
+          ))}
+        </ul>
       </section>
 
       {/* What is home care */}
-      <section className="container-x grid gap-14 py-24 lg:grid-cols-2 lg:items-center lg:py-32">
-        <ParallaxImage src="/images/holding-hands.jpg" alt="Caregiver holding a senior's hands" className="aspect-[4/5] rounded-[32px] lg:aspect-[5/6]" strength={50} />
-        <div>
-          <Reveal>
-            <h2 className="h-display text-4xl sm:text-5xl">{whatIs.title}</h2>
-            <p className="mt-6 text-lg leading-relaxed text-ink/70">{whatIs.text}</p>
+      <section className="wrap py-24 lg:py-32">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:items-end">
+          <h2 className="display text-[clamp(3.4rem,9vw,10rem)]">
+            <SplitWords text={whatIs.title} accent={[3]} />
+          </h2>
+          <Reveal delay={0.2}>
+            <p className="max-w-xl text-lg leading-relaxed text-bone/70">{whatIs.text}</p>
           </Reveal>
-          <Stagger as="ol" className="mt-10 divide-y divide-ink/10 border-y border-ink/10" stagger={0.07}>
-            {whatIs.items.map((it, i) => (
-              <StaggerItem as="li" key={it} className="flex items-baseline gap-5 py-4">
-                <span className="font-display text-sm text-plum">{String(i + 1).padStart(2, "0")}</span>
-                <span className="text-ink/85">{it}</span>
-              </StaggerItem>
-            ))}
-          </Stagger>
+        </div>
+        <div className="mt-16">
+          <HoverList
+            items={whatIs.items}
+            images={["/images/started.jpg", "/images/forehead.jpg", "/images/shoulder.jpg", "/images/caregiver-man.jpg", "/images/care-chat.jpg", "/images/holding-hands.jpg"]}
+          />
         </div>
       </section>
 
       {/* Video */}
-      <section className="container-x pb-24 lg:pb-32">
-        <VideoCard href={site.video} />
+      <section className="wrap pb-32">
+        <a href={site.video} target="_blank" rel="noopener noreferrer" data-cursor="hover" className="group relative block aspect-[16/9] overflow-hidden rounded-[28px]" aria-label="Watch our service overview video on YouTube">
+          <div className="absolute inset-0">
+            <ParallaxImage src="/images/video-cover.png" alt="Watch our service overview video" className="h-full w-full" strength={60} sizes="100vw" />
+          </div>
+          <div className="absolute inset-0 bg-void/10 transition-colors duration-700 group-hover:bg-void/40" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Magnetic strength={0.5}>
+              <span className="flex h-28 w-28 items-center justify-center rounded-full bg-bone text-void transition-transform duration-700 ease-silk group-hover:scale-125 sm:h-36 sm:w-36">
+                <svg width="30" height="30" viewBox="0 0 24 24" className="ml-1" aria-hidden>
+                  <path d="M7 4.5v15l12-7.5z" fill="currentColor" />
+                </svg>
+              </span>
+            </Magnetic>
+          </div>
+        </a>
       </section>
 
       {/* Movement */}
-      <section className="relative overflow-hidden">
-        <ParallaxImage src="/images/team-hands.jpg" alt="Hands joined in a circle forming hearts" className="h-[520px] sm:h-[600px]" strength={90} sizes="100vw" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/40 to-ink/10" />
-        <div className="container-x absolute inset-x-0 bottom-0 pb-16 text-cream">
+      <ClipReveal src="/images/team-hands.jpg" alt="Hands joined in a circle forming hearts">
+        <div className="pointer-events-auto grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-end">
+          <h2 className="display text-[clamp(3rem,8vw,9rem)]">
+            {movement.title.split(". ")[0]}. <span className="italic grad">{movement.title.split(". ")[1]}</span>
+          </h2>
+          <div>
+            <p className="max-w-md text-lg text-bone/80">{movement.text}</p>
+            <div className="mt-8">
+              <PillButton href="/jobs">
+                {movement.cta} <Arrow />
+              </PillButton>
+            </div>
+          </div>
+        </div>
+      </ClipReveal>
+
+      {/* Caregivers */}
+      <PhotoRing>
+        <p className="label mb-6">Better You</p>
+        <h2 className="display text-[clamp(3.6rem,10vw,11rem)]">
+          {caregivers.title.split(" ")[0]} <span className="italic grad">{caregivers.title.split(" ")[1]}</span>
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-lg text-bone/70">{caregivers.paragraphs[0]}</p>
+      </PhotoRing>
+
+      <section className="wrap grid gap-16 py-32 lg:grid-cols-[1fr_1.2fr] lg:py-44">
+        <div className="relative">
+          <div className="grid grid-cols-2 gap-4 lg:sticky lg:top-24">
+            <ParallaxImage src="/images/care-chat.jpg" alt="Caregiver talking with a senior woman" className="aspect-[3/4] rounded-2xl" strength={40} sizes="25vw" />
+            <ParallaxImage src="/images/started.jpg" alt="Caregiver combing a senior woman's hair" className="mt-20 aspect-[3/4] rounded-2xl" strength={70} sizes="25vw" />
+          </div>
+        </div>
+        <div className="space-y-12">
+          {caregivers.paragraphs.slice(1).map((p, i) => (
+            <ScrollFillText key={i} text={p} className={i === 0 ? "display text-[clamp(1.8rem,3vw,3rem)] leading-[1.1]" : "text-xl leading-relaxed text-bone"} />
+          ))}
           <Reveal>
-            <h2 className="max-w-3xl font-display text-4xl leading-tight sm:text-6xl">{movement.title}</h2>
-            <p className="mt-5 max-w-xl text-lg text-cream/80">{movement.text}</p>
-            <SpringButton href="/jobs" variant="light" className="mt-8">
-              {movement.cta} <Arrow />
-            </SpringButton>
+            <blockquote className="border-l-2 border-lilac pl-8 font-display text-2xl italic leading-snug text-bone/85 sm:text-3xl">{caregivers.closing}</blockquote>
           </Reveal>
         </div>
       </section>
 
       <Testimonials />
 
-      <PhotoRing>
-        <h2 className="font-display text-5xl font-medium leading-none sm:text-7xl">{caregivers.title}</h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-cream/75">{caregivers.paragraphs[0]}</p>
-      </PhotoRing>
-
-      {/* Caregivers */}
-      <section className="bg-sand py-24 lg:py-32">
-        <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.1fr]">
-          <div className="relative">
-            <div className="lg:sticky lg:top-28">
-              <div className="grid grid-cols-2 gap-4">
-                <ParallaxImage src="/images/care-chat.jpg" alt="Caregiver talking with a senior woman" className="aspect-[3/4] rounded-3xl" strength={30} sizes="25vw" />
-                <ParallaxImage src="/images/started.jpg" alt="Caregiver combing a senior woman's hair" className="mt-12 aspect-[3/4] rounded-3xl" strength={45} sizes="25vw" />
-              </div>
-            </div>
-          </div>
-          <div className="space-y-8">
-            {caregivers.paragraphs.slice(1).map((p, i) => (
-              <Reveal key={i} delay={i * 0.05}>
-                <p className={i === 0 ? "font-display text-2xl leading-snug text-ink sm:text-3xl" : "text-lg leading-relaxed text-ink/70"}>{p}</p>
-              </Reveal>
-            ))}
-            <Reveal>
-              <blockquote className="rounded-3xl border-l-4 border-plum bg-cream p-8 font-display text-xl italic leading-relaxed text-ink/85">
-                {caregivers.closing}
-              </blockquote>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
       {/* Los Angeles */}
-      <section className="container-x grid gap-14 py-24 lg:grid-cols-2 lg:items-center lg:py-32">
-        <div className="order-2 lg:order-1">
-          <Reveal>
-            <p className="eyebrow">Locations</p>
-            <h2 className="h-display mt-5 text-5xl sm:text-6xl">{la.title}</h2>
-            <p className="mt-6 text-lg leading-relaxed text-ink/70">{la.text}</p>
-            <p className="mt-6 font-medium text-ink">
+      <ClipReveal src="/images/los-angeles.webp" alt="Palm-lined street in Los Angeles">
+        <div className="pointer-events-auto grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
+          <h2 className="display text-[clamp(3.4rem,9vw,10rem)]">
+            Los Angeles <span className="italic grad">County</span>
+          </h2>
+          <div>
+            <p className="text-base leading-relaxed text-bone/80">{la.text}</p>
+            <p className="mt-5 text-bone">
               {la.call.replace(site.phone + ".", "")}
-              <a href={site.phoneHref} className="text-brand underline decoration-brand/30 underline-offset-4 hover:decoration-brand">
-                {site.phone}
-              </a>
-              .
+              <a href={site.phoneHref} className="text-lilac underline underline-offset-4">{site.phone}</a>.
             </p>
-          </Reveal>
+          </div>
         </div>
-        <ParallaxImage src="/images/los-angeles.webp" alt="Palm-lined street in Los Angeles" className="order-1 aspect-[4/3] rounded-[32px] lg:order-2" strength={50} />
-      </section>
+      </ClipReveal>
 
       {/* Map */}
-      <section className="container-x pb-24 lg:pb-32">
+      <section className="wrap py-28">
         <Reveal>
-          <div className="overflow-hidden rounded-[32px] border border-ink/10 bg-white">
-            <div className="grid lg:grid-cols-[1fr_2fr]">
-              <div className="space-y-4 p-10">
-                <p className="eyebrow">Contact Info</p>
-                <p className="font-display text-2xl leading-snug">
-                  {site.address.line1}
-                  <br />
-                  {site.address.line2}
-                </p>
-                <p className="text-ink/70">
-                  Phone : <a className="text-brand" href={site.phoneHref}>{site.phone}</a>
-                  <br />
-                  Fax : {site.fax}
-                </p>
-                <p className="text-sm text-ink/50">{site.license}</p>
-              </div>
-              <iframe
-                title="Map: Better You Home Care, Burbank"
-                src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
-                className="h-[360px] w-full border-0 lg:h-full lg:min-h-[360px]"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+          <div className="grid overflow-hidden rounded-[28px] border border-line lg:grid-cols-[1fr_2fr]">
+            <div className="space-y-5 bg-surface p-10">
+              <p className="label">Contact Info</p>
+              <p className="display text-4xl leading-tight">
+                {site.address.line1}
+                <br />
+                {site.address.line2}
+              </p>
+              <p className="text-bone/70">
+                Phone : <a className="text-lilac" href={site.phoneHref}>{site.phone}</a>
+                <br />
+                Fax : {site.fax}
+              </p>
+              <p className="label">{site.license}</p>
             </div>
+            <iframe
+              title="Map: Better You Home Care, Burbank"
+              src={`https://www.google.com/maps?q=${encodeURIComponent(site.mapQuery)}&output=embed`}
+              className="h-[380px] w-full border-0 lg:h-full lg:min-h-[420px]"
+              style={{ filter: "invert(0.92) hue-rotate(180deg) saturate(0.6) contrast(0.9)" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </Reveal>
       </section>
 
       {/* Join */}
-      <section className="container-x pb-24 lg:pb-32">
-        <div className="grid gap-12 rounded-[32px] bg-plum-soft p-8 sm:p-14 lg:grid-cols-2">
-          <Reveal>
-            <h2 className="h-display text-4xl sm:text-5xl">{joinForm.title}</h2>
+      <section className="wrap pb-32">
+        <div className="relative grid gap-12 overflow-hidden rounded-[32px] bg-plum-deep p-8 sm:p-14 lg:grid-cols-2">
+          <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-plum/30 blur-[100px]" />
+          <div className="relative">
+            <h2 className="display text-[clamp(2.8rem,5.5vw,5.5rem)]">
+              <SplitWords text={joinForm.title} accent={[3]} />
+            </h2>
             {joinForm.lines.map((l) => (
-              <p key={l} className="mt-4 text-lg text-ink/70">{l}</p>
+              <p key={l} className="mt-4 text-lg text-bone/70">{l}</p>
             ))}
-          </Reveal>
-          <Reveal delay={0.15}>
+            <div className="relative mt-10 hidden aspect-[2/1] overflow-hidden rounded-2xl lg:block">
+              <Image src="/images/thumbs-up.webp" alt="Healthcare workers giving a thumbs up" fill sizes="40vw" className="object-cover" />
+            </div>
+          </div>
+          <div className="relative">
             <ContactForm subject="Job application" />
-          </Reveal>
+          </div>
         </div>
       </section>
     </>

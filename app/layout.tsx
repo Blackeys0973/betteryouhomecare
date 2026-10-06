@@ -1,13 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Poppins } from "next/font/google";
+import { Instrument_Serif, Manrope } from "next/font/google";
+import Cursor from "@/components/Cursor";
+import Preloader from "@/components/Preloader";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SmoothScroll from "@/components/SmoothScroll";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const display = Fraunces({ subsets: ["latin"], variable: "--font-display", axes: ["opsz", "SOFT"] });
-const sans = Poppins({ subsets: ["latin"], weight: ["300", "400", "500", "600"], variable: "--font-sans" });
+const display = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-display" });
+const sans = Manrope({ subsets: ["latin"], variable: "--font-sans" });
 
 const description =
   "Our team of caregivers are highly trained and they are available 24/7 to make sure your loved one will have all the attention and care they deserve.";
@@ -29,7 +31,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: site.title, description, images: ["/images/hug.jpg"] },
 };
 
-export const viewport: Viewport = { themeColor: "#faf7f2", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#08090c", width: "device-width", initialScale: 1 };
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -55,7 +57,9 @@ const jsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body>
+      <body className="noise">
+        <Preloader />
+        <Cursor />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <SmoothScroll />
         <Header />

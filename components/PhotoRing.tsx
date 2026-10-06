@@ -30,10 +30,10 @@ export default function PhotoRing({ children }: { children: ReactNode }) {
   const step = 360 / n;
 
   return (
-    <section ref={ref} className="relative h-[260vh] bg-ink">
+    <section ref={ref} className="relative h-[260vh] bg-void">
       <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center overflow-hidden">
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[60vmin] w-[60vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-plum/30 blur-[120px]" />
-        <div className="relative z-10 px-5 text-center text-cream">{children}</div>
+        <div className="relative z-10 px-5 text-center text-bone">{children}</div>
         <motion.div style={{ scale }} className="relative mt-10 h-[38vmin] w-full" >
           <div className="absolute inset-0" style={{ perspective: "1400px" }}>
             <motion.div

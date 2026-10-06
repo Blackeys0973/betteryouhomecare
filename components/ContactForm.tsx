@@ -1,33 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Magnetic } from "./motion";
 
 // The original site's forms post to WordPress. Set NEXT_PUBLIC_FORM_ENDPOINT
 // (e.g. a Formspree URL) on Vercel so submissions reach the business.
 const endpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
 
-export default function ContactForm({ subject, dark = false }: { subject: string; dark?: boolean }) {
-  const field = dark
-    ? "border-cream/20 bg-white/5 text-cream placeholder:text-cream/50 focus:border-cream/60"
-    : "border-ink/15 bg-white text-ink placeholder:text-ink/40 focus:border-brand";
+const field =
+  "w-full border-0 border-b border-bone/20 bg-transparent px-0 py-4 text-lg text-bone outline-none transition-colors placeholder:text-bone/35 focus:border-lilac focus:ring-0";
+
+export default function ContactForm({ subject }: { subject: string }) {
+  const id = subject.replace(/\s+/g, "-").toLowerCase();
   return (
-    <form action={endpoint} method="POST" className="grid gap-4">
+    <form action={endpoint} method="POST" className="grid gap-2">
       <input type="hidden" name="_subject" value={subject} />
-      <label className="sr-only" htmlFor={`${subject}-name`}>Name</label>
-      <input id={`${subject}-name`} name="name" required placeholder="Name" className={`rounded-2xl border px-5 py-4 text-sm outline-none transition-colors ${field}`} />
-      <label className="sr-only" htmlFor={`${subject}-email`}>Email</label>
-      <input id={`${subject}-email`} name="email" type="email" required placeholder="Email" className={`rounded-2xl border px-5 py-4 text-sm outline-none transition-colors ${field}`} />
-      <label className="sr-only" htmlFor={`${subject}-message`}>Message</label>
-      <textarea id={`${subject}-message`} name="message" rows={4} placeholder="Message" className={`resize-none rounded-2xl border px-5 py-4 text-sm outline-none transition-colors ${field}`} />
-      <motion.button
-        type="submit"
-        whileHover={{ scale: 1.03, y: -2 }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ type: "spring", stiffness: 420, damping: 22 }}
-        className={`justify-self-start rounded-full px-8 py-3.5 text-sm font-semibold ${dark ? "bg-cream text-ink" : "bg-ink text-cream"}`}
-      >
-        Send
-      </motion.button>
+      <label className="sr-only" htmlFor={`${id}-name`}>Name</label>
+      <input id={`${id}-name`} name="name" required placeholder="Name" className={field} />
+      <label className="sr-only" htmlFor={`${id}-email`}>Email</label>
+      <input id={`${id}-email`} name="email" type="email" required placeholder="Email" className={field} />
+      <label className="sr-only" htmlFor={`${id}-message`}>Message</label>
+      <textarea id={`${id}-message`} name="message" rows={3} placeholder="Message" className={`${field} resize-none`} />
+      <div className="mt-6">
+        <Magnetic>
+          <button type="submit" className="group relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full bg-bone text-sm font-semibold text-void">
+            <span className="absolute inset-0 scale-0 rounded-full bg-plum transition-transform duration-700 ease-silk group-hover:scale-100" />
+            <span className="relative">Send</span>
+          </button>
+        </Magnetic>
+      </div>
     </form>
   );
 }

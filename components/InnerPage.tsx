@@ -1,5 +1,6 @@
 import ContactForm from "./ContactForm";
-import { Arrow, ParallaxImage, Reveal, SpringButton, Stagger, StaggerItem } from "./motion";
+import Marquee from "./Marquee";
+import { Arrow, ParallaxImage, PillButton, Reveal, ScrollFillText, Stagger, StaggerItem } from "./motion";
 import PageTitle from "./PageTitle";
 import { site } from "@/lib/site";
 
@@ -30,66 +31,66 @@ export default function InnerPage({
 }) {
   return (
     <>
-      <section className="relative overflow-hidden pb-16 pt-36 sm:pt-44">
-        <div className="grain pointer-events-none absolute inset-0" />
-        <div className="pointer-events-none absolute -right-40 top-0 h-[480px] w-[480px] rounded-full bg-plum/15 blur-[110px]" />
-        <div className="container-x relative">
+      <section className="relative overflow-hidden pb-16 pt-40 sm:pt-48">
+        <div className="pointer-events-none absolute -right-40 top-0 h-[50vmax] w-[50vmax] rounded-full bg-plum/15 blur-[140px]" />
+        <div className="wrap relative">
           <PageTitle eyebrow={eyebrow} title={title} />
         </div>
       </section>
 
-      <section className="container-x grid gap-14 pb-24 lg:grid-cols-[1.1fr_1fr] lg:pb-32">
-        <div className="space-y-6">
+      <section className="px-5 sm:px-10">
+        <ParallaxImage src={image} alt={imageAlt} className="h-[70svh] rounded-[28px]" strength={90} priority sizes="100vw" />
+      </section>
+
+      <section className="wrap grid gap-12 py-28 lg:grid-cols-[220px_1fr] lg:py-40">
+        <p className="label pt-3">{eyebrow}</p>
+        <div className="space-y-10">
           {paragraphs.map((p, i) => (
-            <Reveal key={i} delay={0.1 + i * 0.06}>
-              <p className={i === 0 ? "text-xl leading-relaxed text-ink/85" : "text-lg leading-relaxed text-ink/70"}>{p}</p>
-            </Reveal>
+            <ScrollFillText key={i} text={p} className={i === 0 ? "display text-[clamp(1.9rem,3.4vw,3.4rem)] leading-[1.1]" : "text-xl leading-relaxed"} />
           ))}
-          <Reveal delay={0.3} className="flex flex-wrap gap-4 pt-4">
-            <SpringButton href={cta.href}>
+          <Reveal className="flex flex-wrap gap-3 pt-4">
+            <PillButton href={cta.href}>
               {cta.label} <Arrow />
-            </SpringButton>
-            <SpringButton href={site.phoneHref} variant="ghost">
+            </PillButton>
+            <PillButton href={site.phoneHref} variant="ghost">
               {site.phone}
-            </SpringButton>
+            </PillButton>
           </Reveal>
         </div>
-        <ParallaxImage src={image} alt={imageAlt} className="aspect-[4/3] rounded-[32px] lg:sticky lg:top-28 lg:aspect-[4/5]" strength={40} priority />
       </section>
 
       {features && (
-        <section className="bg-sand py-24 lg:py-32">
-          <div className="container-x">
+        <>
+          <div className="border-y border-line">
+            <Marquee items={features.map((f) => f.title)} outline />
+          </div>
+          <section className="wrap py-28 lg:py-36">
             {featuresTitle && (
-              <Reveal className="mb-14 max-w-2xl">
-                <h2 className="h-display text-4xl sm:text-5xl">{featuresTitle}</h2>
-                {featuresText && <p className="mt-5 text-lg text-ink/70">{featuresText}</p>}
+              <Reveal className="mb-16 max-w-3xl">
+                <h2 className="display text-[clamp(2.6rem,5.5vw,5.5rem)]">{featuresTitle}</h2>
+                {featuresText && <p className="mt-6 text-lg text-bone/70">{featuresText}</p>}
               </Reveal>
             )}
-            <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
+            <Stagger className="grid border-t border-line sm:grid-cols-2 lg:grid-cols-3" stagger={0.08}>
               {features.map((f, i) => (
-                <StaggerItem key={f.title}>
-                  <div className="group h-full rounded-3xl bg-cream p-8 transition-all duration-500 ease-silk hover:-translate-y-1.5 hover:bg-white hover:shadow-xl hover:shadow-ink/10">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-plum-soft font-display text-lg text-plum transition-colors duration-500 group-hover:bg-ink group-hover:text-cream">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-6 font-display text-2xl">{f.title}</h3>
-                    <p className="mt-3 leading-relaxed text-ink/65">{f.text}</p>
-                  </div>
+                <StaggerItem key={f.title} className="group border-b border-line py-10 sm:border-r sm:px-8 sm:first:pl-0">
+                  <span className="label">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="display mt-8 text-4xl transition-all duration-500 ease-silk group-hover:italic group-hover:text-lilac">{f.title}</h3>
+                  <p className="mt-4 leading-relaxed text-bone/65">{f.text}</p>
                 </StaggerItem>
               ))}
             </Stagger>
-          </div>
-        </section>
+          </section>
+        </>
       )}
 
       {form && (
-        <section id="join" className="container-x scroll-mt-24 py-24 lg:py-32">
-          <div className="grid gap-12 rounded-[32px] bg-plum-soft p-8 sm:p-14 lg:grid-cols-2">
+        <section id="join" className="wrap scroll-mt-24 pb-32">
+          <div className="grid gap-12 rounded-[32px] bg-plum-deep p-8 sm:p-14 lg:grid-cols-2">
             <Reveal>
-              <h2 className="h-display text-4xl sm:text-5xl">{form.title}</h2>
+              <h2 className="display text-[clamp(2.8rem,5.5vw,5.5rem)]">{form.title}</h2>
               {form.lines.map((l) => (
-                <p key={l} className="mt-4 text-lg text-ink/70">{l}</p>
+                <p key={l} className="mt-4 text-lg text-bone/70">{l}</p>
               ))}
             </Reveal>
             <Reveal delay={0.15}>
@@ -101,4 +102,3 @@ export default function InnerPage({
     </>
   );
 }
-
