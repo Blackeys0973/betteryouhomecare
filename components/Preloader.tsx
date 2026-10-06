@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Mark } from "./LogoMark";
 import { expo } from "./motion";
 
 export default function Preloader() {
@@ -40,12 +39,12 @@ export default function Preloader() {
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-8 bg-void"
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1.1, ease: expo }}
-            className="h-20 w-20"
+            initial={{ opacity: 0, scale: 0.85, y: 12, filter: "blur(8px)" }}
+            animate={{ opacity: 1, scale: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: expo }}
           >
-            <Mark alt="Better You Home Care" className="h-full w-full" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo-full.svg" alt="Better You Home Care" className="h-36 w-auto sm:h-44" />
           </motion.div>
           <div className="h-px w-48 bg-bone/10">
             <div className="h-px bg-gradient-to-r from-brand to-plum" style={{ width: `${n}%` }} />
