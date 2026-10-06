@@ -90,9 +90,12 @@ export default function Footer() {
         </Reveal>
 
         <div className="wrap relative flex flex-col gap-3 border-t border-line py-8 text-xs text-bone/45 sm:flex-row sm:items-center sm:justify-between">
-          <p>{site.copyright}</p>
+          <p>{site.copyright.replace(/\d{4}/, String(new Date().getFullYear()))}</p>
           <p>{site.license}</p>
           <Link href="/privacy-policy" className="hover:text-bone">Policy and Privacy</Link>
+          <p>
+            Made with <span className="text-plum" aria-label="love">♥</span> by Buzzhalo Studio
+          </p>
         </div>
       </motion.div>
     </footer>
