@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "agentskill-sh": {
+      "source": {
+        "source": "url",
+        "url": "https://agentskill.sh/marketplace.json"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "learn@agentskill-sh": true
+  }
+}
