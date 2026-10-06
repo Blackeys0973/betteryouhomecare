@@ -64,9 +64,9 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: INTRO + 0.9 }}
-            className="mt-14 grid max-w-md grid-cols-3 gap-6 border-t border-line pt-6 text-sm"
+            className="mt-14 grid max-w-sm grid-cols-2 gap-6 border-t border-line pt-6 text-sm"
           >
-            {["24Hr/7 Days Support", home.la.title, site.license].map((t) => (
+            {["24Hr/7 Days Support", home.la.title].map((t) => (
               <div key={t} className="leading-snug">
                 <dd className="font-medium text-bone/80">{t}</dd>
               </div>

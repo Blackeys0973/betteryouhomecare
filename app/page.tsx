@@ -175,7 +175,6 @@ export default function HomePage() {
                 <br />
                 Fax : {site.fax}
               </p>
-              <p className="label">{site.license}</p>
             </div>
             <iframe
               title="Map: Better You Home Care, Burbank"
