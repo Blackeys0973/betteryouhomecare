@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRef } from "react";
 import { home, site } from "@/lib/site";
+import { SpinBadge } from "./LogoMark";
 import { Arrow, PhoneIcon, PillButton, SplitWords, silk } from "./motion";
 
 const LiquidImage = dynamic(() => import("./three/LiquidImage"), { ssr: false });
@@ -94,6 +95,15 @@ export default function Hero() {
             <div className="relative aspect-[4/3]">
               <Image src="/images/caregiver-smile.jpg" alt="Caregiver smiling with a senior man" fill sizes="240px" className="object-cover" />
             </div>
+          </motion.div>
+          <motion.div
+            style={{ y: smallY }}
+            initial={{ opacity: 0, scale: 0.5, rotate: -60 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.4, ease: silk, delay: INTRO + 1 }}
+            className="absolute -left-5 top-[38%] z-10 w-24 sm:-left-10 sm:w-32 lg:-left-16 lg:w-36"
+          >
+            <SpinBadge text="High Standard of Care • 24/7 Home Care • " />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

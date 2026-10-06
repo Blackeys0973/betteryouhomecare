@@ -1,8 +1,8 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Mark } from "./LogoMark";
 import { expo } from "./motion";
 
 export default function Preloader() {
@@ -39,8 +39,13 @@ export default function Preloader() {
           transition={{ duration: 0.8, ease: expo }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-8 bg-void"
         >
-          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative h-20 w-40">
-            <Image src="/images/logo.png" alt="Better You Home Care" fill sizes="160px" className="object-contain" priority />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6, rotate: -90 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1.1, ease: expo }}
+            className="h-20 w-20"
+          >
+            <Mark alt="Better You Home Care" className="h-full w-full" />
           </motion.div>
           <div className="h-px w-48 bg-bone/10">
             <div className="h-px bg-gradient-to-r from-brand to-plum" style={{ width: `${n}%` }} />

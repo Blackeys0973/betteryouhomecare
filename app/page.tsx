@@ -4,6 +4,7 @@ import ContactForm from "@/components/ContactForm";
 import Hero from "@/components/Hero";
 import HorizontalPillars from "@/components/HorizontalPillars";
 import HoverList from "@/components/HoverList";
+import { ScrollMark } from "@/components/LogoMark";
 import Marquee from "@/components/Marquee";
 import PhotoRing from "@/components/PhotoRing";
 import StackedServices from "@/components/StackedServices";
@@ -19,6 +20,7 @@ export default function HomePage() {
 
       {/* Statement */}
       <section className="wrap py-28 text-center lg:py-40">
+        <ScrollMark className="mx-auto mb-8 h-14 w-14" turns={1} drift={20} />
         <p className="label">About Us</p>
         <ScrollFillText text={home.hero.about} className="display t-lg mx-auto mt-8 max-w-4xl !leading-[1.3]" />
       </section>
@@ -192,6 +194,7 @@ export default function HomePage() {
       <section className="wrap pb-32">
         <div className="relative grid gap-12 overflow-hidden rounded-[32px] bg-plum-deep p-8 sm:p-14 lg:grid-cols-2">
           <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-plum/30 blur-[100px]" />
+          <ScrollMark className="absolute -right-16 top-10 h-72 w-72 opacity-[0.07] lg:right-[40%]" turns={0.6} />
           <div className="relative">
             <h2 className="display t-lg">
               <SplitWords text={joinForm.title} accent={[3]} />

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { assist, nav, site } from "@/lib/site";
 import ContactForm from "./ContactForm";
+import { ScrollMark } from "./LogoMark";
 import { Reveal, SplitWords } from "./motion";
 
 export default function Footer() {
@@ -16,6 +17,7 @@ export default function Footer() {
       <motion.div style={{ y }} className="relative">
         <div className="pointer-events-none absolute -left-40 top-0 h-[50vmax] w-[50vmax] rounded-full bg-brand/15 blur-[160px]" />
         <div className="pointer-events-none absolute -right-40 bottom-0 h-[50vmax] w-[50vmax] rounded-full bg-plum/20 blur-[160px]" />
+        <ScrollMark className="absolute -right-24 top-24 h-[34rem] w-[34rem] opacity-[0.06]" turns={0.4} drift={60} />
 
         <div className="wrap relative grid gap-16 border-t border-line pb-16 pt-28 lg:grid-cols-[1.3fr_1fr] lg:pt-40">
           <div>
