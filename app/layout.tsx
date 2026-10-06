@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Instrument_Serif, Manrope } from "next/font/google";
+import CookieBanner from "@/components/CookieBanner";
 import Cursor from "@/components/Cursor";
 import Preloader from "@/components/Preloader";
 import Footer from "@/components/Footer";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
